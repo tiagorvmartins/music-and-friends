@@ -15,7 +15,6 @@ module.exports = {
           .loader('sass-loader')
           .end()
   },
-
   transpileDependencies: [
     'vuetify'
   ]

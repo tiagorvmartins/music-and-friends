@@ -53,7 +53,7 @@
                     </v-card-subtitle>
 
                     <v-card-actions>
-                        <v-btn color="#1976d2" text> Explorar </v-btn>
+                        <v-btn color="#FFCA28" text> Explorar </v-btn>
 
                         <v-spacer></v-spacer>
 
@@ -80,8 +80,41 @@
             
            
         </div>
-        <div style="">
+        
+
+
+        <div class="wrapper" style="border-bottom:3px solid #FFCA28;">
+            <div class="wrapper" style="max-width:1240px;margin:0 auto;display:flex;">
+                <v-row no-gutters align="center" justify="center" class="mt-6 mb-6">
+                    <h2>Aprende connosco, não te arrependerás e mesmo que aconteça temos política de reembolso.</h2>
+                    <p style="color:grey;">Somos apenas alguns dos incríveis talentos nacionais que terás acesso quanto te juntares.</p>
+                </v-row>
+            </div>
+            <div class="wrapper" style="max-width:1240px;margin:0 auto;display:flex;justify-content:center;">                
+                
+                <v-row no-gutters class="mt-0 mb-16">
+                    <v-col cols="12" sm="12" md="3" v-for="tutor in tutors" :key="tutor.name" class="">
+                        <v-hover v-slot="{ hover }">
+                            <v-card 
+                                style="position:relative;" 
+                                :elevation="hover ? 24 : 0"
+                                class="tutor-card"
+                                >
+                                <v-img
+                                    class="tutor-image" 
+                                    :class="{ 'on-hover': hover }" :src="tutor.image" aspect-ratio="1">
+                                    <div style="z-index:20;" class="fill-height gradient"/>
+                                </v-img>
+                                <span class="tutor-name">
+                                    {{ tutor.name }}
+                                </span>
+                            </v-card>
+                        </v-hover>
+                </v-col>
+                </v-row>
+            </div>
             
+           
         </div>
         
     </v-app>    
@@ -112,6 +145,24 @@
           additional: "Eu sou um texto adicional muito longo que posso adicionar aqui, só porque sim... Poderia continuar a escrever imensas coisas, e vou continuar, é só para encher e mostrar como iria ser apresentado.",
           show: false
         }
+      ],
+      tutors: [
+          { 
+              name: "Érico Reis",
+              image: "https://static8.depositphotos.com/1035121/1054/i/950/depositphotos_10547147-stock-photo-guitar-player-playing-his-guitar.jpg"
+          },
+          { 
+              name: "Pedro Mocho",
+              image: "https://st.depositphotos.com/1770836/1476/i/950/depositphotos_14761957-stock-photo-guitar-player.jpg"
+          },
+          { 
+              name: "Joaquim Inácio",
+              image: "https://static8.depositphotos.com/1035121/1054/i/950/depositphotos_10547147-stock-photo-guitar-player-playing-his-guitar.jpg"
+          },
+          { 
+              name: "Maurício Flores",
+              image: "https://st.depositphotos.com/1770836/1476/i/950/depositphotos_14761957-stock-photo-guitar-player.jpg"
+          }
       ]
     }),
   }
@@ -148,4 +199,60 @@
     .wrapper {
         padding: 0 1.5rem;
     }
+
+    .tutor-image {
+        filter: grayscale(100%) brightness(.7);
+        background: linear-gradient(45deg,rgba(252,82,68,.7) 0,rgba(252,82,68,0) 100%);
+    }
+
+
+    .tutor-name {
+        color:#FFCA28;
+        display: block;
+        position: absolute;
+        z-index: 4;
+        bottom: 2rem;
+        left: 2rem;
+        line-height: 1;
+        overflow: hidden;
+        padding-right: 5rem;
+    }
+
+
+    .tutor-card:hover .tutor-name{
+        transform: scale(1.5);
+        left: 4rem;
+        z-index: 12;
+        font-size: 1.5rem;
+        -webkit-text-stroke: 1px black; /* width and color */
+    }
+
+    .tutor-image {
+        transition: opacity .4s ease-in-out;
+        
+    }
+
+    .tutor-image:not(.on-hover) {
+        opacity: 0.5;
+    }
+
+    .tutor-image:hover{
+        transform: scale(1.1);
+        z-index: 12;
+        filter: grayscale(0) brightness(1);
+    }
+
+    .tutor-card:hover {
+        z-index: 10;
+    }
+
+    .gradient {
+        background: linear-gradient(45deg,rgb(255, 202, 40,0.7) 0,rgba(252,82,68,0) 100%);
+        z-index:23;
+    }
+
+    
+
+    
+
 </style>
